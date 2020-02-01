@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+
+    swapi-game:
+        container_name: swapi-game
+        build:
+            context: .
+            dockerfile: Dockerfile-dev
+        volumes:
+            - '.:/app'
+            - '/app/node_modules'
+        ports:
+            - '3001:3000'
