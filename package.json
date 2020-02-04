@@ -17,8 +17,13 @@
   "author": "Fabien SOMNIER <fabien.somnier@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/material-ui": "^0.21.7",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
+    "@types/react-router-dom": "^4.3.5",
+    "@types/styled-components": "^4.4.2",
+    "babel-plugin-styled-components": "^1.10.7",
+    "hoist-non-react-statics": "^3.3.2",
     "html-webpack-plugin": "^3.2.0",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.2.1",
@@ -28,7 +33,11 @@
     "webpack-dev-server": "^3.10.2"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.41",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^4.3.1",
+    "styled-components": "^4.4.1"
   }
 }

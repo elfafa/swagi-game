@@ -14,12 +14,17 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js'],
+        // Modules
+        modules: [ 
+            path.resolve(__dirname, 'src'),
+            path.resolve(__dirname, 'node_modules')
+        ]
     },
 
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist')
     },
 
     module: {
@@ -55,6 +60,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         })
-    ]
+    ],
+
+    devServer: {
+        publicPath: '/',
+        historyApiFallback: true
+    }
 };
 
