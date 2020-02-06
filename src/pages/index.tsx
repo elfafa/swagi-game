@@ -2,9 +2,7 @@ import * as React from 'react'
 
 import { PrimaryButton, SecondaryButton, Title } from 'components/elements'
 
-export interface HomeProps {}
-
-export const Home = (props: HomeProps) => (
+export default () => (
     <>
         <Title>Welcome to a fun SWAPI Game!</Title>
         <br/>

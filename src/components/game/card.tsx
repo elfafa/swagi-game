@@ -1,25 +1,41 @@
 import * as React from 'react'
-import { useState } from 'react'
 
-import Grid from '@material-ui/core/Grid'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Typography from '@material-ui/core/Typography'
 
-export interface CardProps {}
+import { ObjectProps } from '../../../config'
 
-export const Card = (props: CardProps) => {
-    const [resource, setResource] = useState('person')
-    const [players, setPlayers] = useState(2)
+interface CardProps {
+    card?: ObjectProps | null,
+    resource: string,
+    player: number,
+    winner?: boolean | null,
+}
+
+export default (props: CardProps) => {
+    const { card, resource, player, winner } = props
+
+    let content = []
+    if (card) {
+        for (let field in card) {
+            content.push(
+                <Typography>{card[field]}</Typography>
+            )
+        }
+    } else {
+        content.push(<CircularProgress />)
+    }
 
     return (
-        <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-        >
-            <Grid
-                item
-            >
-            </Grid>
-        </Grid>
+        <Card>
+            <CardContent>
+                <Typography gutterBottom>
+                    {resource}
+                </Typography>
+                {content}
+            </CardContent>
+        </Card>
     )
 }

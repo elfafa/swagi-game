@@ -1,5 +1,5 @@
 export const START_GAME = 'START_GAME' // start a new game
-export const GET_CARDS = 'GET_CARDS' // request for players cards
+export const REQUEST_CARDS = 'REQUEST_CARDS' // request for players cards
 export const RECEIVE_CARD = 'RECEIVE_CARD' // receive a player card
 export const NEXT_ROUND = 'NEXT_ROUND' // go to next round in game
 export const END_GAME = 'END_GAME' // end current game
@@ -45,8 +45,8 @@ export interface StartGameAction {
 }
 
 /** Get cards action interface */
-export interface GetCardsAction {
-    type: typeof GET_CARDS,
+export interface RequestCardsAction {
+    type: typeof REQUEST_CARDS,
 }
 
 /** Receive card action interface */
@@ -66,4 +66,4 @@ export interface EndGameAction {
     type: typeof END_GAME,
 }
 
-export type GameActionTypes = StartGameAction | GetCardsAction | ReceiveCardAction | NextRoundAction | EndGameAction
+export type GameActionTypes = StartGameAction | RequestCardsAction | ReceiveCardAction | NextRoundAction | EndGameAction

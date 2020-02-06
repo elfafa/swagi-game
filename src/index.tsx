@@ -4,9 +4,9 @@ import { Provider } from 'react-redux'
 import { render } from 'react-dom'
 
 import { GlobalStyles, MainWrapper } from 'components/elements'
-import { Home } from 'pages'
-import { Game } from 'pages/game'
-import { History } from 'pages/history'
+import Home from 'pages'
+import Game from 'pages/game'
+import History from 'pages/history'
 import configureStore from 'configureStore'
 
 const store = configureStore()

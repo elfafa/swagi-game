@@ -3,16 +3,19 @@ import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 
 import { startGame } from 'store/game/actions'
-import { GameState } from 'store/game/types'
-import Setup from 'components/game/setup'
+import { RootState } from 'store'
+import Card from 'components/game/card'
+
+const mapStateToProps = (state: RootState) => ({
+    resource: state.game.setup.resource
+})
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        onStartClick: (resource: string, players: number) => dispatch(startGame(resource, players))
     }
 }
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
-)(Setup)
+)(Card)

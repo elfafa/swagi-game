@@ -8,13 +8,13 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
 import { PrimaryButton, BackButton, Title  } from 'components/elements'
 import { upper  } from 'libraries'
 
-import config from '../../../config'
+import { config } from '../../../config'
 
 interface SetupProps {
     onStartClick: (arg0: string, arg1: number) => void
 }
 
-export const Setup = (props: SetupProps) => {
+export default (props: SetupProps) => {
     const {onStartClick} = props
     const [resource, setResource] = useState(Object.keys(config.resources)[0])
     const [players, setPlayers] = useState(config.minPlayers)
