@@ -1,15 +1,15 @@
 import axios from 'axios'
 
 import { swapiBase, config } from '../../config'
-import { ObjectProps } from 'libraries/types'
+import { Card } from 'libraries'
 
 const getApiUrl = (resource: string, id: number) => {
     return config.resources[resource].api.replace('{id}', id.toString())
 }
 
 /** will load a random cards for the given resource */
-export const loadCard = async (resource: string, callback: (card: ObjectProps) => void) => {
-    let card: ObjectProps
+export const loadCard = async (resource: string, callback: (card: Card) => void) => {
+    let card: Card
     const apiClient = axios.create({
         baseURL: swapiBase,
         responseType: 'json',
@@ -27,7 +27,7 @@ export const loadCard = async (resource: string, callback: (card: ObjectProps) =
                 alreadyTried.push(triedId)
                 const response = await apiClient.get(getApiUrl(resource, triedId))
                 if (200 === response.status) {
-                    const data: ObjectProps = response.data
+                    const data: Card = response.data
                     card = {}
                     for (let field of config.resources[resource].display) {
                         card[field] = data[field]
@@ -35,6 +35,7 @@ export const loadCard = async (resource: string, callback: (card: ObjectProps) =
                 }
             }
         } catch (err) {
+            console.error(err)
         }
     }
     callback(card)

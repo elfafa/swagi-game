@@ -12,16 +12,27 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
 
-import { ObjectProps, Stat } from 'libraries/types'
+import { Card as CardDetails, Stat, purify } from 'libraries'
 
 interface CardProps {
-    card?: ObjectProps | null,
-    resource: string,
-    icon?: string,
-    player: number,
-    winner?: boolean | null,
-    loading: boolean,
-    stats?: Stat,
+    card?: CardDetails | null, // card details
+    resource: string, // which resource it is
+    icon?: string, // which icon to use
+    player: number, // which player card it is
+    winner?: boolean | null, // is the card winning
+    loading: boolean, // is the card loading
+    stats?: Stat, // player statistics
+}
+
+const styles = {
+    // highlight winning card
+    winnerCard: {
+        backgroundColor: 'yellow',
+    },
+    // highlight leader
+    leaderIcon: {
+        backgroundColor: 'red',
+    },
 }
 
 export default (props: CardProps) => {
@@ -32,10 +43,10 @@ export default (props: CardProps) => {
         let rows: any[] = []
         for (let field in card) {
             rows.push(
-                <ListItem key={`${field}`}>
-                    <ListItemText key="label" primary={`${field}`} />
+                <ListItem key={field}>
+                    <ListItemText key="label" primary={purify(field)} />
                     <ListItemSecondaryAction key="value">
-                        <ListItemText primary={`${card[field]}`} />
+                        <ListItemText primary={purify(card[field])} />
                     </ListItemSecondaryAction>
                 </ListItem>
             )
@@ -44,18 +55,20 @@ export default (props: CardProps) => {
     }
 
     return (
-        <Card>
+        <Card style={winner ? styles.winnerCard : null}>
             <CardHeader
                 avatar={
-                    <Avatar aria-label="recipe">
-                        <Icon>{icon}</Icon>
+                    <Avatar aria-label="recipe" style={stats.leader ? styles.leaderIcon : null}>
+                        <Icon>{stats.leader ? 'stars' : icon}</Icon>
                     </Avatar>
                 }
                 title={`Player ${player}`}
                 subheader={stats ? [
-                    <label>W: {stats.winner}</label>,
-                    <label>D: {stats.deuce}</label>,
-                    <label>L: {stats.looser}</label>
+                    <label key="wins">W: {stats.wins}</label>,
+                    '  ',
+                    <label key="deuces">D: {stats.deuces}</label>,
+                    '  ',
+                    <label key="looses">L: {stats.looses}</label>
                 ] : null}
             />
             <CardContent>

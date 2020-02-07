@@ -1,11 +1,11 @@
-import { ObjectProps } from 'libraries/types'
+import { Rules } from 'libraries'
 
 export const swapiBase: string = 'https://swapi.co/api'
 
 interface ResourceProps {
     api: string, // path to get the cards
     display: string[], // field to display in card
-    rules: ObjectProps, // criteria to win
+    rules: Rules, // criteria to win
     maxId: number, // maximum existing identifier
     icon: string, // which icon to use
 }

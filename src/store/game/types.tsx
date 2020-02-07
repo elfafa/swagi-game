@@ -1,7 +1,8 @@
-import { Setup, Round, Stats, Times } from 'libraries/types'
+import { Setup, Round, Stats, Times } from 'libraries'
 
 export const START_GAME = 'START_GAME' // start a new game
 export const RECEIVED_CARD = 'RECEIVED_CARD' // receive a player card
+export const SET_WINNERS = 'SET_WINNERS' // set the winners of the round
 export const NEW_ROUND = 'NEW_ROUND' // go to next round in game
 export const END_GAME = 'END_GAME' // end current game
 
@@ -26,6 +27,12 @@ export interface ReceiveCardAction {
     player: number,
 }
 
+/** Set winnes of current round interface */
+export interface SetWinnersAction {
+    type: typeof SET_WINNERS,
+    winners: string[],
+}
+
 /** Next round action interface */
 export interface NewRoundAction {
     type: typeof NEW_ROUND,
@@ -36,4 +43,4 @@ export interface EndGameAction {
     type: typeof END_GAME,
 }
 
-export type GameActionTypes = StartGameAction | ReceiveCardAction | NewRoundAction | EndGameAction
+export type GameActionTypes = StartGameAction | ReceiveCardAction | SetWinnersAction | NewRoundAction | EndGameAction
