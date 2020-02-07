@@ -24,10 +24,11 @@ export interface Player {
 
 /** One round details */
 export interface Round {
-    player_1: Player | null,
-    player_2: Player | null,
-    player_3: Player | null,
-    player_4: Player | null,
+    player_1: Player,
+    player_2: Player,
+    player_3?: Player,
+    player_4?: Player,
+    [propName: string]: Player
 }
 
 /** Information of the game */

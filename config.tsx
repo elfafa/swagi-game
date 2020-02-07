@@ -4,15 +4,15 @@ export interface ObjectProps {
     [key: string]: string,
 }
 
-interface ResourcesProps {
-    [key: string]: ResourceProps,
-}
-
 interface ResourceProps {
     api: string,
     display: string[],
     rules: ObjectProps,
     maxId: number,
+}
+
+interface ResourcesProps {
+    [key: string]: ResourceProps,
 }
 
 interface ConfigProps {

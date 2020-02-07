@@ -3,8 +3,8 @@ import {
     START_GAME,
     RECEIVED_CARD,
     NEW_ROUND,
-    Round,
     Player,
+    Round,
 } from './types'
 
 const initialState: GameState = {
@@ -36,18 +36,22 @@ export default function gameReducer(
                 setup: action.setup,
             }
         case NEW_ROUND:
-            state.rounds.push({
-                player_1: JSON.parse(JSON.stringify(emptyPlayer)),
-                player_2: JSON.parse(JSON.stringify(emptyPlayer)),
-                player_3: (2 < state.setup.players ? JSON.parse(JSON.stringify(emptyPlayer)) : undefined),
-                player_4: (3 < state.setup.players ? JSON.parse(JSON.stringify(emptyPlayer)) : undefined),
-            })
+            let newRound: Round = {
+                'player_1': JSON.parse(JSON.stringify(emptyPlayer)),
+                'player_2': JSON.parse(JSON.stringify(emptyPlayer)),
+            }
+            for (let player = 1; player <= state.setup.players; player++) {
+                newRound[`player_${player}`] = JSON.parse(JSON.stringify(emptyPlayer))
+            }
+            state.rounds.push(newRound)
             return {
                 ...state,
             }
         case RECEIVED_CARD:
-            state.rounds[state.rounds.length-1]['player_'+action.player].card = action.card
-            state.rounds[state.rounds.length-1]['player_'+action.player].loading = false
+            const currentRound: number = state.rounds.length-1
+            const currentPlayer: string = `player_${action.player}`
+            state.rounds[currentRound][currentPlayer].card = action.card
+            state.rounds[currentRound][currentPlayer].loading = false
 
             return {
                 ...state,
