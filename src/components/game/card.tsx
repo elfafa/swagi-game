@@ -22,17 +22,17 @@ export default (props: CardProps) => {
     if (!loading) {
         for (let field in card) {
             content.push(
-                <Typography>{card[field]}</Typography>
+                <Typography key={field}>{card[field]}</Typography>
             )
         }
     } else {
-        content.push(<CircularProgress />)
+        content.push(<CircularProgress key="loading"/>)
     }
 
     return (
         <Card>
             <CardContent>
-                <Typography gutterBottom>
+                <Typography key="resource" gutterBottom>
                     {resource}
                 </Typography>
                 {content}

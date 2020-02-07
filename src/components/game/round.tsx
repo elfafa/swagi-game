@@ -19,7 +19,7 @@ export default (props: RoundProps) => {
     for (let player = 1; player <= players; player++) {
         cardBlocks.push(
             <Grid
-                key={'player-'+player}
+                key={`player-${player}`}
                 item
                 xs={12}
                 sm={'auto'}

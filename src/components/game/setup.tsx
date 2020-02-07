@@ -22,13 +22,13 @@ export default (props: SetupProps) => {
     // dynamically construct the resource choices
     const resourcesDom: Array<any> = []
     Object.keys(config.resources).forEach((key: string) => (
-        resourcesDom.push(<ToggleButton key={"resource-"+key} value={key} aria-label={"resource "+key}>{upper(key)}</ToggleButton>)
+        resourcesDom.push(<ToggleButton key={`resource-${key}`} value={key} aria-label={`resource-${key}`}>{upper(key)}</ToggleButton>)
     ))
 
     // dynamically construct the players choices
     const playersDom: Array<any> = []
     for(let key = config.minPlayers; key <= config.maxPlayers; key++){
-        playersDom.push(<ToggleButton key={"players-"+key} value={key} aria-label={"players "+key}>{key}</ToggleButton>)
+        playersDom.push(<ToggleButton key={`players-${key}`} value={key} aria-label={`players-${key}`}>{key}</ToggleButton>)
     }
 
     return (

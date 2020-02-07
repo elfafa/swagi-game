@@ -34,7 +34,6 @@ export const loadCard = async (resource: string, callback: (card: ObjectProps) =
                 }
             }
         } catch (err) {
-            console.error(err)
         }
     }
     callback(card)
