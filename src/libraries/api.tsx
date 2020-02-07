@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-import { ObjectProps, swapiBase, config } from '../../config'
+import { swapiBase, config } from '../../config'
+import { ObjectProps } from 'libraries/types'
 
 const getApiUrl = (resource: string, id: number) => {
     return config.resources[resource].api.replace('{id}', id.toString())

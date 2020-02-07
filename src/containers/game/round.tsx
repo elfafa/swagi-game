@@ -7,7 +7,8 @@ import { RootState } from 'store'
 import Round from 'components/game/round'
 
 const mapStateToProps = (state: RootState) => ({
-    players: state.game.setup.players
+    players: state.game.setup.players,
+    stats: state.game.stats,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => {

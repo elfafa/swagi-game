@@ -1,11 +1,5 @@
-import {
-    GameState, GameActionTypes,
-    START_GAME,
-    RECEIVED_CARD,
-    NEW_ROUND,
-    Player,
-    Round,
-} from './types'
+import { GameState, GameActionTypes, START_GAME, RECEIVED_CARD, NEW_ROUND } from './types'
+import { Player, Round, Stat, Stats } from 'libraries/types'
 
 const initialState: GameState = {
     setup: {
@@ -13,6 +7,7 @@ const initialState: GameState = {
         players: null,
     },
     rounds: [],
+    stats: null,
     times: {
         start: null,
         end: null,
@@ -25,15 +20,29 @@ const emptyPlayer: Player = {
     winner: undefined,
 }
 
+const initialStat: Stat = {
+    winner: 0,
+    deuce: 0,
+    looser: 0,
+}
+
 export default function gameReducer(
     state = initialState,
     action: GameActionTypes
 ): GameState {
     switch (action.type) {
         case START_GAME:
+            let newStats: Stats = {
+                'player_1': JSON.parse(JSON.stringify(initialStat)),
+                'player_2': JSON.parse(JSON.stringify(initialStat)),
+            }
+            for (let player = 1; player <= action.setup.players; player++) {
+                newStats[`player_${player}`] = JSON.parse(JSON.stringify(initialStat))
+            }
             return {
                 ...state,
                 setup: action.setup,
+                stats: newStats,
             }
         case NEW_ROUND:
             let newRound: Round = {

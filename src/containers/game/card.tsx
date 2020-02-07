@@ -2,9 +2,11 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 
-import { Round } from 'store/game/types'
+import { Round } from 'libraries/types'
 import { RootState } from 'store'
 import Card from 'components/game/card'
+
+import { config } from '../../../config'
 
 const mapStateToProps = (state: RootState, ownProps: any) => {
     let card: object
@@ -19,7 +21,8 @@ const mapStateToProps = (state: RootState, ownProps: any) => {
     return {
         card: card,
         loading: loading,
-        resource: state.game.setup.resource
+        resource: state.game.setup.resource,
+        icon: config.resources[state.game.setup.resource].icon
     }
 }
 
