@@ -10,7 +10,7 @@ interface GameProps {
 }
 
 const Game = (props: GameProps) => {
-    return props.ready ? <Round/> : <Setup/>
+    return props.ready ? <Round key="round"/> : <Setup key="setup"/>
 }
 
 const mapStateToProps = (state: RootState) => ({

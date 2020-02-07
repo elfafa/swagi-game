@@ -32,50 +32,41 @@ export default (props: SetupProps) => {
     }
 
     return (
-        <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-        >
+        <Grid item>
+            <Title>Select the game to play</Title>
+            <Title>Play with</Title>
             <Grid
-                item
+                container
+                justify="center"
             >
-                <Title>Select the game to play</Title>
-                <Title>Play with</Title>
-                <Grid
-                    container
-                    justify="center"
+                <ToggleButtonGroup
+                    value={resource}
+                    exclusive
+                    onChange={(event, value) => setResource(value)}
+                    aria-label="resource choice"
                 >
-                    <ToggleButtonGroup
-                        value={resource}
-                        exclusive
-                        onChange={(event, value) => setResource(value)}
-                        aria-label="resource choice"
-                    >
-                        {resourcesDom}
-                    </ToggleButtonGroup>
-                </Grid>
-                <Title>How many players</Title>
-                <Grid
-                    container
-                    justify="center"
+                    {resourcesDom}
+                </ToggleButtonGroup>
+            </Grid>
+            <Title>How many players</Title>
+            <Grid
+                container
+                justify="center"
+            >
+                <ToggleButtonGroup
+                    value={players}
+                    exclusive
+                    onChange={(event, value) => setPlayers(value)}
+                    aria-label="players choice"
                 >
-                    <ToggleButtonGroup
-                        value={players}
-                        exclusive
-                        onChange={(event, value) => setPlayers(value)}
-                        aria-label="players choice"
-                    >
-                        {playersDom}
-                    </ToggleButtonGroup>
-                </Grid>
-                <Grid
-                    container
-                    justify="center"
-                >
-                    <PrimaryButton onClick={() => onStartClick(resource, players)}>Play a new game</PrimaryButton>
-                </Grid>
+                    {playersDom}
+                </ToggleButtonGroup>
+            </Grid>
+            <Grid
+                container
+                justify="center"
+            >
+                <PrimaryButton onClick={() => onStartClick(resource, players)}>Play a new game</PrimaryButton>
             </Grid>
         </Grid>
     )

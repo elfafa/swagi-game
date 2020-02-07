@@ -37,7 +37,7 @@ export default (props: RoundProps) => {
             container
             direction="row"
             justify="center"
-            alignItems="stretch"
+            alignItems="center"
             spacing={2}
         >
             {cardBlocks}
