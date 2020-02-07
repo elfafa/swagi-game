@@ -12,13 +12,14 @@ interface CardProps {
     resource: string,
     player: number,
     winner?: boolean | null,
+    loading: boolean,
 }
 
 export default (props: CardProps) => {
-    const { card, resource, player, winner } = props
+    const { loading, card, resource, player, winner } = props
 
     let content = []
-    if (card) {
+    if (!loading) {
         for (let field in card) {
             content.push(
                 <Typography>{card[field]}</Typography>

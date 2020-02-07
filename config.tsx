@@ -1,5 +1,4 @@
-const swapiBase: string = 'https://swapi.co/api'
-const getUrl = (path: string) => swapiBase + path
+export const swapiBase: string = 'https://swapi.co/api'
 
 export interface ObjectProps {
     [key: string]: string,
@@ -10,29 +9,24 @@ interface ResourcesProps {
 }
 
 interface ResourceProps {
+    api: string,
     display: string[],
-    rules: ObjectProps
+    rules: ObjectProps,
+    maxId: number,
 }
 
 interface ConfigProps {
-    swapiBase: string,
-    apis: ObjectProps,
     resources: ResourcesProps,
     minPlayers: number,
     maxPlayers: number,
 }
 
 export const config: ConfigProps = {
-    // base url for SWAPI apis
-    swapiBase,
-    // paths for each kind of resources
-    apis: {
-        character: getUrl('/people'),
-        starship: getUrl('/starships')
-    },
     // managed resources
     resources: {
         character: {
+            // path to get the cards
+            api: '/people/{id}/',
             // field to display in card
             display: [ 'name', 'height', 'mass', 'hair_color', 'skin_color', 'eye_color', 'birth_year', 'gender' ],
             // criteria to win
@@ -41,8 +35,12 @@ export const config: ConfigProps = {
                 height: 'bigger',
                 birth_year: 'bigger',
             },
+            // maximum existing identifier
+            maxId: 87,
         },
         starship: {
+            // path to get the cards
+            api: '/starships/{id}/',
             // field to display in card
             display: [ 'name', 'model', 'manufacturer', 'starship_class', 'length', 'crew', 'passengers', 'cargo_capacity' ],
             // criteria to win
@@ -51,6 +49,8 @@ export const config: ConfigProps = {
                 passengers: 'bigger',
                 length: 'bigger',
             },
+            // maximum existing identifier
+            maxId: 37,
         }
     },
     // how many players min
