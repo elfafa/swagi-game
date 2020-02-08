@@ -4,7 +4,7 @@ import { Dispatch } from 'redux'
 
 import { Round } from 'libraries'
 import { RootState } from 'store'
-import Card from 'components/game/card'
+import Card from 'components/game/Card'
 
 import { config } from '../../../config'
 

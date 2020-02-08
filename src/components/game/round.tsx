@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button'
 import Grid, { GridSize } from '@material-ui/core/Grid'
 
 import { Stats } from 'libraries'
-import Card from 'containers/game/card'
+import Card from 'containers/game/Card'
 
 export interface RoundProps {
     players: number,

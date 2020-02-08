@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import Round from 'containers/game/round'
-import Setup from 'containers/game/setup'
+import Round from 'containers/game/Round'
+import Setup from 'containers/game/Setup'
 import { RootState } from 'store'
 
 interface GameProps {

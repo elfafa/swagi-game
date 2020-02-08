@@ -4,7 +4,7 @@ import { Dispatch } from 'redux'
 
 import { startGame } from 'store/game/actions'
 import { GameState } from 'store/game/types'
-import Setup from 'components/game/setup'
+import Setup from 'components/game/Setup'
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
