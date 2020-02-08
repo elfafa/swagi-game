@@ -11,6 +11,7 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
+import Tooltip from '@material-ui/core/Tooltip'
 
 import { Card as CardDetails, Stat, purify } from 'libraries'
 
@@ -59,7 +60,9 @@ export default (props: CardProps) => {
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe" style={stats.leader ? styles.leaderIcon : null}>
-                        <Icon>{stats.leader ? 'stars' : icon}</Icon>
+                        <Tooltip title={(stats.leader ? 'Leader ' : '')+resource}>
+                            <Icon>{stats.leader ? 'stars' : icon}</Icon>
+                        </Tooltip>
                     </Avatar>
                 }
                 title={`Player ${player}`}

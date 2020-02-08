@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
+import Tooltip from '@material-ui/core/Tooltip'
 
 const styles = {
     // will be aligned to the left side
@@ -27,9 +28,11 @@ export default () => (
     <AppBar position="static">
         <Toolbar variant="dense">
             <div style={styles.homeButton as React.CSSProperties}>
-                <IconButton edge="start" color="inherit" aria-label="menu" href="/">
-                    <Icon>home</Icon>
-                </IconButton>
+                <Tooltip title="Home">
+                    <IconButton edge="start" color="inherit" aria-label="menu" href="/">
+                        <Icon>home</Icon>
+                    </IconButton>
+                </Tooltip>
             </div>
             <div style={styles.title as React.CSSProperties}>
                 <Typography variant="h6" color="inherit">
@@ -37,9 +40,11 @@ export default () => (
                 </Typography>
             </div>
             <div style={styles.historyButton as React.CSSProperties}>
-                <IconButton edge="end" color="inherit" aria-label="menu" href="/">
-                    <Icon>history</Icon>
-                </IconButton>
+                <Tooltip title="History">
+                    <IconButton edge="end" color="inherit" aria-label="menu" href="/history">
+                        <Icon>history</Icon>
+                    </IconButton>
+                </Tooltip>
             </div>
         </Toolbar>
     </AppBar>

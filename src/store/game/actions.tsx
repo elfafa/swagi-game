@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux'
 
-import { START_GAME, StartGameAction, NEW_ROUND, RECEIVED_CARD, SET_WINNERS } from './types'
+import { START_GAME, StartGameAction, NEW_ROUND, RECEIVED_CARD, SET_WINNERS, END_GAME, EndGameAction } from './types'
 import { RootState } from 'store'
 import { loadCard, getWinners, Round, Rules, Card } from 'libraries'
 
@@ -56,5 +56,12 @@ export function whoWin(): any {
             type: SET_WINNERS,
             winners: getWinners(round, rules)
         })
+    }
+}
+
+/** Close a game action */
+export function endGame(): EndGameAction {
+    return {
+        type: END_GAME,
     }
 }

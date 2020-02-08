@@ -1,3 +1,20 @@
 import * as React from 'react'
 
-export default () => <h1>History page!</h1>
+import Grid from '@material-ui/core/Grid'
+
+import { Title } from 'components/elements'
+import List from 'components/history/list'
+
+export default () => (
+    <Grid item>
+        <Grid 
+            container
+            justify="center"
+            direction="column"
+            alignItems="center"
+        >
+            <Title>History of games</Title>
+            <List/>
+        </Grid>
+    </Grid>
+)

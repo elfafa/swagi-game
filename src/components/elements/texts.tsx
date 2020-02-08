@@ -5,3 +5,8 @@ export const Title = styled.h1`
     text-align: center;
     color: palevioletred;
 `
+export const Text = styled.h3`
+    font-size: 1em;
+    text-align: center;
+    color: white;
+`

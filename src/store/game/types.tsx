@@ -8,6 +8,7 @@ export const END_GAME = 'END_GAME' // end current game
 
 /** Information of the game */
 export interface GameState {
+    id: number,
     setup: Setup,
     rounds: Round[],
     stats?: Stats,

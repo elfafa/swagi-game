@@ -1,7 +1,8 @@
-import { GameState, GameActionTypes, START_GAME, RECEIVED_CARD, SET_WINNERS, NEW_ROUND } from './types'
-import { Player, Round, Stat, Stats } from 'libraries'
+import { GameState, GameActionTypes, START_GAME, RECEIVED_CARD, SET_WINNERS, NEW_ROUND, END_GAME } from './types'
+import { Player, Round, Stat, Stats, saveGame, closeGame } from 'libraries'
 
 const initialState: GameState = {
+    id: null,
     setup: {
         resource: null,
         players: null,
@@ -83,9 +84,12 @@ export default function gameReducer(
             for (let player = 1; player <= state.setup.players; player++) {
                 state.stats[`player${player}`].leader = (1 === leaders.length && leaders.includes(`player${player}`))
             }
+            state.id = saveGame(state.stats, state.rounds, state.id)
             return {
                 ...state,
             }
+        case END_GAME:
+            closeGame(state.id)
         default:
             return state
     }

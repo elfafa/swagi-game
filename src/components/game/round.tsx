@@ -1,22 +1,24 @@
 import * as React from 'react'
 import { useEffect  } from 'react'
 
+import Button from '@material-ui/core/Button'
 import Grid, { GridSize } from '@material-ui/core/Grid'
 
 import { Stats } from 'libraries'
-import { PrimaryButton } from 'components/elements'
 import Card from 'containers/game/card'
 
 export interface RoundProps {
     players: number,
     stats: Stats,
-    onNewRound: () => void
+    onNewRound: () => void,
+    onEndGame: () => void
 }
 
 export default (props: RoundProps) => {
-    const { players, stats, onNewRound } = props
+    const { players, stats, onNewRound, onEndGame } = props
 
     useEffect(() => { onNewRound() }, [])
+    useEffect(() => () => { onEndGame() }, [])
 
     let cardBlocks = []
     for (let player = 1; player <= players; player++) {
@@ -36,6 +38,20 @@ export default (props: RoundProps) => {
     return (
         <>
             <Grid
+                key="button"
+                container
+                justify="center"
+            >
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    onClick={onNewRound}
+                >
+                    Play a new round
+                </Button>
+            </Grid>,
+            <Grid
                 key="cards"
                 container
                 direction="row"
@@ -44,13 +60,6 @@ export default (props: RoundProps) => {
                 spacing={2}
             >
                 {cardBlocks}
-            </Grid>,
-            <Grid
-                key="button"
-                container
-                justify="center"
-            >
-                <PrimaryButton onClick={onNewRound}>Play a new round</PrimaryButton>
             </Grid>
         </>
     )

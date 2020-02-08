@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 
-import { newRound } from 'store/game/actions'
+import { newRound, endGame } from 'store/game/actions'
 import { RootState } from 'store'
 import Round from 'components/game/round'
 
@@ -14,6 +14,7 @@ const mapStateToProps = (state: RootState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         onNewRound: () => dispatch(newRound()),
+        onEndGame: () => dispatch(endGame()),
     }
 }
 

@@ -1,11 +1,13 @@
 import * as React from 'react'
 import { useState } from 'react'
 
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import ToggleButton from '@material-ui/lab/ToggleButton'
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
 
-import { PrimaryButton, Title  } from 'components/elements'
+import { Title  } from 'components/elements'
 import { upper  } from 'libraries'
 
 import { config } from '../../../config'
@@ -33,8 +35,7 @@ export default (props: SetupProps) => {
 
     return (
         <Grid item>
-            <Title>Select the game to play</Title>
-            <Title>Play with</Title>
+            <Title>Select your resource</Title>
             <Grid
                 container
                 justify="center"
@@ -48,7 +49,7 @@ export default (props: SetupProps) => {
                     {resourcesDom}
                 </ToggleButtonGroup>
             </Grid>
-            <Title>How many players</Title>
+            <Title>And how many players to play</Title>
             <Grid
                 container
                 justify="center"
@@ -62,11 +63,19 @@ export default (props: SetupProps) => {
                     {playersDom}
                 </ToggleButtonGroup>
             </Grid>
+            <Title>Then</Title>
             <Grid
                 container
                 justify="center"
             >
-                <PrimaryButton onClick={() => onStartClick(resource, players)}>Play a new game</PrimaryButton>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    onClick={() => onStartClick(resource, players)}
+                >
+                    Play!
+                </Button>
             </Grid>
         </Grid>
     )

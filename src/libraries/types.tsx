@@ -17,7 +17,7 @@ export interface Setup {
 /** Timestamps of the game */
 export interface Times {
     start: number,
-    end: number | null,
+    end?: number,
 }
 
 /** One player details */
@@ -51,4 +51,11 @@ export interface Stats {
     player3?: Stat,
     player4?: Stat,
     [propName: string]: Stat
+}
+
+export interface Game {
+    id?: number,
+    stats: Stats,
+    rounds: Round[],
+    times: Times,
 }
