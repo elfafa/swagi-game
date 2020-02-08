@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-import { swapiBase, config } from '../../config'
 import { Card } from 'libraries'
+
+import { config } from '../../config'
 
 const getApiUrl = (resource: string, id: number) => {
     return config.resources[resource].api.replace('{id}', id.toString())
@@ -11,7 +12,7 @@ const getApiUrl = (resource: string, id: number) => {
 export const loadCard = async (resource: string, callback: (card: Card) => void) => {
     let card: Card
     const apiClient = axios.create({
-        baseURL: swapiBase,
+        baseURL: config.swapiBase,
         responseType: 'json',
         headers: {
             'Content-Type': 'application/json'

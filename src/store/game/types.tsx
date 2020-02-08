@@ -44,4 +44,5 @@ export interface EndGameAction {
     type: typeof END_GAME,
 }
 
+/** List of managed actions for game reducer **/
 export type GameActionTypes = StartGameAction | ReceiveCardAction | SetWinnersAction | NewRoundAction | EndGameAction

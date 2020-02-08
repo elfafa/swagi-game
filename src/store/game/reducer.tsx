@@ -1,5 +1,5 @@
-import { GameState, GameActionTypes, START_GAME, RECEIVED_CARD, SET_WINNERS, NEW_ROUND, END_GAME } from './types'
 import { Player, Round, Stat, Stats, saveGame, closeGame } from 'libraries'
+import { GameState, GameActionTypes, START_GAME, RECEIVED_CARD, SET_WINNERS, NEW_ROUND, END_GAME } from './types'
 
 const initialState: GameState = {
     id: null,

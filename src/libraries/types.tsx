@@ -1,9 +1,12 @@
+/** Card details **/
 export interface Card {
     [key: string]: string,
 }
 
+/** Managed rule types **/
 export type Rule = 'bigger' | 'smaller'
 
+/** List of rules **/
 export interface Rules {
     [key: string]: Rule,
 }
@@ -53,6 +56,7 @@ export interface Stats {
     [propName: string]: Stat
 }
 
+/** One game details */
 export interface Game {
     id?: number,
     resource?: string,

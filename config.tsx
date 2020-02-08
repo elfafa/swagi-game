@@ -1,7 +1,5 @@
 import { Rules } from 'libraries'
 
-export const swapiBase: string = 'https://swapi.co/api'
-
 interface ResourceProps {
     api: string, // path to get the cards
     display: string[], // field to display in card
@@ -15,12 +13,14 @@ interface ResourcesProps {
 }
 
 interface ConfigProps {
+    swapiBase: string, // base url to the API
     resources: ResourcesProps, // managed resources
     minPlayers: number, // how many players min in game
     maxPlayers: number, // how many players max in game
 }
 
 export const config: ConfigProps = {
+    swapiBase: 'https://swapi.co/api',
     resources: {
         character: {
             api: '/people/{id}/',

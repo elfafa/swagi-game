@@ -1,17 +1,17 @@
 import * as React from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { render } from 'react-dom'
 
-import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 
-import NavTab from 'components/layout/navtab'
+import configureStore from 'configureStore'
 import { GlobalStyles } from 'components/elements'
+import NavTab from 'components/layout/NavTab'
 import Home from 'pages'
 import Game from 'pages/game'
 import History from 'pages/history'
-import configureStore from 'configureStore'
 
 const store = configureStore()
 

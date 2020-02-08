@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography'
 
 import { Card as CardDetails, Stat, purify } from 'libraries'
 
-interface CardProps {
+export interface Props {
     card?: CardDetails | null, // card details
     resource: string, // which resource it is
     icon?: string, // which icon to use
@@ -36,7 +36,7 @@ const styles = {
     },
 }
 
-export default (props: CardProps) => {
+export default (props: Props) => {
     const { loading, card, resource, player, winner, icon, stats } = props
 
     let content: any = <CircularProgress key="loading"/>

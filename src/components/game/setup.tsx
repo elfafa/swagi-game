@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useState } from 'react'
 
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
@@ -12,14 +11,14 @@ import { upper  } from 'libraries'
 
 import { config } from '../../../config'
 
-interface SetupProps {
-    onStartClick: (arg0: string, arg1: number) => void
+export interface Props {
+    onStartClick: (resource: string, player: number) => void
 }
 
-export default (props: SetupProps) => {
+export default (props: Props) => {
     const {onStartClick} = props
-    const [resource, setResource] = useState(Object.keys(config.resources)[0])
-    const [players, setPlayers] = useState(config.minPlayers)
+    const [resource, setResource] = React.useState(Object.keys(config.resources)[0])
+    const [players, setPlayers] = React.useState(config.minPlayers)
 
     // dynamically construct the resource choices
     const resourcesDom: Array<any> = []

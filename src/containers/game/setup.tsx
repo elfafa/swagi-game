@@ -2,9 +2,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 
-import { startGame } from 'store/game/actions'
-import { GameState } from 'store/game/types'
 import Setup from 'components/game/Setup'
+import { startGame } from 'store/game/actions'
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {

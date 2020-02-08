@@ -1,7 +1,7 @@
-import { combineReducers, Dispatch, Reducer } from 'redux'
+import { combineReducers, Reducer } from 'redux'
 
-import { GameState } from './game/types'
 import gameReducer from './game/reducer'
+import { GameState } from './game/types'
 
 export interface RootState {
     game: GameState

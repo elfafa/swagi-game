@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
 
-import { Round } from 'libraries'
 import { RootState } from 'store'
 import Card from 'components/game/Card'
 

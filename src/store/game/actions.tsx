@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux'
 
-import { START_GAME, StartGameAction, NEW_ROUND, RECEIVED_CARD, SET_WINNERS, END_GAME, EndGameAction } from './types'
-import { RootState } from 'store'
 import { loadCard, getWinners, Round, Rules, Card } from 'libraries'
+import { RootState } from 'store'
+import { START_GAME, StartGameAction, NEW_ROUND, RECEIVED_CARD, SET_WINNERS, END_GAME, EndGameAction } from './types'
 
 import { config } from '../../../config'
 

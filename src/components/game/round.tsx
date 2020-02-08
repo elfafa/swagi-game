@@ -1,24 +1,23 @@
 import * as React from 'react'
-import { useEffect  } from 'react'
 
 import Button from '@material-ui/core/Button'
 import Grid, { GridSize } from '@material-ui/core/Grid'
 
-import { Stats } from 'libraries'
 import Card from 'containers/game/Card'
+import { Stats } from 'libraries'
 
-export interface RoundProps {
+export interface Props {
     players: number,
     stats: Stats,
     onNewRound: () => void,
     onEndGame: () => void
 }
 
-export default (props: RoundProps) => {
+export default (props: Props) => {
     const { players, stats, onNewRound, onEndGame } = props
 
-    useEffect(() => { onNewRound() }, [])
-    useEffect(() => () => { onEndGame() }, [])
+    React.useEffect(() => { onNewRound() }, [])
+    React.useEffect(() => () => { onEndGame() }, [])
 
     let cardBlocks = []
     for (let player = 1; player <= players; player++) {
