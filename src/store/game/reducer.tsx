@@ -84,7 +84,7 @@ export default function gameReducer(
             for (let player = 1; player <= state.setup.players; player++) {
                 state.stats[`player${player}`].leader = (1 === leaders.length && leaders.includes(`player${player}`))
             }
-            state.id = saveGame(state.stats, state.rounds, state.id)
+            state.id = saveGame(state.setup.resource, state.stats, state.rounds, state.id)
             return {
                 ...state,
             }

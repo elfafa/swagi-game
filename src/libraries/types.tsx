@@ -55,6 +55,7 @@ export interface Stats {
 
 export interface Game {
     id?: number,
+    resource?: string,
     stats: Stats,
     rounds: Round[],
     times: Times,

@@ -15,7 +15,7 @@ const saveGames = (games: Game[]) => {
     localStorage.setItem(swapiUniqKey, JSON.stringify(games))
 }
 
-export const saveGame = (stats: Stats, rounds: Round[], id?: number) => {
+export const saveGame = (resource: string, stats: Stats, rounds: Round[], id?: number) => {
     let games: Game[] = loadGames()
     let game: Game
     if (id) {
@@ -29,6 +29,7 @@ export const saveGame = (stats: Stats, rounds: Round[], id?: number) => {
         id = games.length + 1
         games.push({
             id,
+            resource,
             stats,
             rounds,
             times: {

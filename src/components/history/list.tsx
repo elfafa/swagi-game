@@ -68,6 +68,7 @@ export default () => {
         history.push(
             <Box m={2}>
                 <List component="nav" aria-label="" style={styles.toolbar}>
+                    <ListItem>Resource: {game.resource}</ListItem>
                     <ListItem>From: {formatDate(game.times.start)}</ListItem>
                     <ListItem>To: {game.times.end ? formatDate(game.times.end) : 'unknown'}</ListItem>
                 </List>
