@@ -17,12 +17,12 @@ import { Card as CardDetails, Stat, purify } from 'libraries'
 
 export interface Props {
     card?: CardDetails | null, // card details
-    resource: string, // which resource it is
     icon?: string, // which icon to use
-    player: number, // which player card it is
-    winner?: boolean | null, // is the card winning
     loading: boolean, // is the card loading
+    player: number, // which player card it is
+    resource: string, // which resource it is
     stats?: Stat, // player statistics
+    winner?: boolean | null, // is the card winning
 }
 
 const styles = {
@@ -56,7 +56,7 @@ export default (props: Props) => {
     }
 
     return (
-        <Card style={winner ? styles.winnerCard : null}>
+        <Card data-testid="card" style={winner ? styles.winnerCard : null}>
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe" style={stats.leader ? styles.leaderIcon : null}>
