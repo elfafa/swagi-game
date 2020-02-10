@@ -1,8 +1,12 @@
 import { Dispatch } from 'redux'
 
-import { loadCard, getWinners, Round, Rules, Card } from 'libraries'
+import {
+    loadCard, getWinners, Round, Card,
+} from 'libraries'
 import { RootState } from 'store'
-import { START_GAME, StartGameAction, NEW_ROUND, RECEIVED_CARD, SET_WINNERS, END_GAME, EndGameAction } from './types'
+import {
+    START_GAME, StartGameAction, NEW_ROUND, RECEIVED_CARD, SET_WINNERS, END_GAME, EndGameAction,
+} from './types'
 
 import { config } from '../../../config'
 
@@ -24,23 +28,23 @@ export function newRound(): any {
             type: NEW_ROUND,
         })
         // load new cards
-        const resource: string = getState().game.setup.resource
-        const players: number = getState().game.setup.players
-        let calls: Promise<void>[] = []
+        const { resource } = getState().game.setup
+        const { players } = getState().game.setup
+        const calls: Promise<void>[] = []
         for (let player = 1; player <= players; player++) {
             calls.push(loadCard(
                 resource,
                 (card: Card) => {
                     dispatch({
                         type: RECEIVED_CARD,
-                        player: player,
+                        player,
                         card,
                     })
-                }
+                },
             ))
         }
         // when all cards are loaded, detect the winner
-        Promise.all(calls).then((responses) => {
+        Promise.all(calls).then(() => {
             dispatch(whoWin())
         })
     }
@@ -49,12 +53,12 @@ export function newRound(): any {
 /** Detect the winner */
 export function whoWin(): any {
     return (dispatch: Dispatch, getState: () => RootState): any => {
-        const rules: Rules = config.resources[getState().game.setup.resource].rules
-        const round: Round = getState().game.rounds[getState().game.rounds.length-1]
+        const { rules } = config.resources[getState().game.setup.resource]
+        const round: Round = getState().game.rounds[getState().game.rounds.length - 1]
 
         dispatch({
             type: SET_WINNERS,
-            winners: getWinners(round, rules)
+            winners: getWinners(round, rules),
         })
     }
 }

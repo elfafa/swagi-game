@@ -8,7 +8,7 @@ import { Title } from 'components/elements'
 
 export default () => (
     <Grid item>
-        <Grid 
+        <Grid
             container
             justify="center"
             direction="column"

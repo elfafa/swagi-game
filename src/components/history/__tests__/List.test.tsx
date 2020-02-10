@@ -1,9 +1,10 @@
 import * as React from 'react'
 
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import List from '../List'
-let libraries = require('libraries')
+
+const libraries = require('libraries')
 
 function renderList() {
     return render(<List />)
@@ -20,7 +21,7 @@ describe('<List />', () => {
 describe('<List />', () => {
     test('should display history', async () => {
         libraries.loadGames = jest.fn(() => [
-            { 
+            {
                 id: 10,
                 resource: 'character',
                 stats: {
@@ -30,7 +31,7 @@ describe('<List />', () => {
                         looses: 3,
                         leader: false,
                     },
-                    player2:  {
+                    player2: {
                         wins: 3,
                         deuces: 2,
                         looses: 1,
@@ -41,9 +42,9 @@ describe('<List />', () => {
                 times: {
                     start: 1580515200000, // 01/02/2020 00:00:00
                     end: 1580533200000, // 01/02/2020 05:00:00
-                }
+                },
             },
-            { 
+            {
                 id: 20,
                 resource: 'starship',
                 stats: {
@@ -53,7 +54,7 @@ describe('<List />', () => {
                         looses: 1,
                         leader: true,
                     },
-                    player2:  {
+                    player2: {
                         wins: 1,
                         deuces: 1,
                         looses: 2,
@@ -64,8 +65,8 @@ describe('<List />', () => {
                 times: {
                     start: 1580688000000, // 03/02/2020 00:00:00
                     end: 1580706000000, // 03/02/2020 05:00:00
-                }
-            }
+                },
+            },
         ])
         const { findByTestId } = renderList()
         expect(screen.queryByText(/no history/i)).toBeNull()

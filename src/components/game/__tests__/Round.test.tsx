@@ -15,7 +15,7 @@ function renderRound(props: Partial<Props> = {}) {
             player3: null,
         },
         onNewRound: () => {},
-        onEndGame: () => {}
+        onEndGame: () => {},
     }
     return render(<Round {...defaultProps} {...props} />)
 }
@@ -24,7 +24,7 @@ describe('<Round />', () => {
     test('should dispatch new round on mount', () => {
         const onNewRound = jest.fn()
         renderRound({
-            onNewRound
+            onNewRound,
         })
         expect(onNewRound.mock.calls.length).toBe(1)
     })
@@ -42,7 +42,7 @@ describe('<Round />', () => {
     test('should dispatch end game on unmount', () => {
         const onEndGame = jest.fn()
         renderRound({
-            onEndGame
+            onEndGame,
         })
         cleanup()
         expect(onEndGame.mock.calls.length).toBe(1)

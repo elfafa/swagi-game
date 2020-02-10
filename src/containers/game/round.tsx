@@ -11,14 +11,12 @@ const mapStateToProps = (state: RootState) => ({
     stats: state.game.stats,
 })
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
-    return {
-        onNewRound: () => dispatch(newRound()),
-        onEndGame: () => dispatch(endGame()),
-    }
-}
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    onNewRound: () => dispatch(newRound()),
+    onEndGame: () => dispatch(endGame()),
+})
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(Round)

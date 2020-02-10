@@ -12,13 +12,13 @@ import { upper } from 'libraries'
 import { config } from '../../../config'
 
 export interface Props {
-    onStartClick: (resource: string, player: number) => void
+    onStartClick: (resource: string, player: number) => void;
 }
 
 export default (props: Props) => {
     const { onStartClick } = props
-    const [ resource, setResource ] = React.useState(Object.keys(config.resources)[0])
-    const [ players, setPlayers ] = React.useState(config.minPlayers)
+    const [resource, setResource] = React.useState(Object.keys(config.resources)[0])
+    const [players, setPlayers] = React.useState(config.minPlayers)
 
     // dynamically construct the resource choices
     const resourcesDom: Array<any> = []
@@ -28,7 +28,7 @@ export default (props: Props) => {
 
     // dynamically construct the players choices
     const playersDom: Array<any> = []
-    for(let key = config.minPlayers; key <= config.maxPlayers; key++){
+    for (let key = config.minPlayers; key <= config.maxPlayers; key++) {
         playersDom.push(<ToggleButton data-testid={`players-${key}`} key={`players-${key}`} value={key} aria-label={`players-${key}`}>{key}</ToggleButton>)
     }
 

@@ -7,31 +7,33 @@ import Card from 'containers/game/Card'
 import { Stats } from 'libraries'
 
 export interface Props {
-    players: number,
-    stats: Stats,
-    onNewRound: () => void,
-    onEndGame: () => void
+    players: number;
+    stats: Stats;
+    onNewRound: () => void;
+    onEndGame: () => void;
 }
 
 export default (props: Props) => {
-    const { players, stats, onNewRound, onEndGame } = props
+    const {
+        players, stats, onNewRound, onEndGame,
+    } = props
 
-    React.useEffect(() => { onNewRound() }, []) // start new round when mount
-    React.useEffect(() => () => { onEndGame() }, []) // end the game when unmount
+    React.useEffect(() => { onNewRound() }, []) // start new round on mount
+    React.useEffect(() => () => { onEndGame() }, []) // end the game on unmount
 
-    let cardBlocks = []
+    const cardBlocks = []
     for (let player = 1; player <= players; player++) {
         cardBlocks.push(
             <Grid
-                data-testid="card" 
+                data-testid="card"
                 key={`player${player}`}
                 item
                 xs={12}
                 sm={6}
                 md={(12 / players) as GridSize}
             >
-                <Card player={player} stats={stats[`player${player}`]}/>
-            </Grid>
+                <Card player={player} stats={stats[`player${player}`]} />
+            </Grid>,
         )
     }
 

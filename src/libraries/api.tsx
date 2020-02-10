@@ -4,9 +4,7 @@ import { Card } from 'libraries'
 
 import { config } from '../../config'
 
-const getApiUrl = (resource: string, id: number) => {
-    return config.resources[resource].api.replace('{id}', id.toString())
-}
+const getApiUrl = (resource: string, id: number) => config.resources[resource].api.replace('{id}', id.toString())
 
 /** will load a random cards from API for the requested resource */
 export const loadCard = async (resource: string, callback: (card: Card) => void) => {
@@ -15,11 +13,11 @@ export const loadCard = async (resource: string, callback: (card: Card) => void)
         baseURL: config.swapiBase,
         responseType: 'json',
         headers: {
-            'Content-Type': 'application/json'
-        }
+            'Content-Type': 'application/json',
+        },
     })
-    const maxId = config.resources[resource].maxId
-    let alreadyTried: number[] = []
+    const { maxId } = config.resources[resource]
+    const alreadyTried: number[] = []
     let triedId: number
     /**
      * note:
@@ -39,10 +37,10 @@ export const loadCard = async (resource: string, callback: (card: Card) => void)
             if (!alreadyTried.includes(triedId)) {
                 alreadyTried.push(triedId)
                 const response = await apiClient.get(getApiUrl(resource, triedId))
-                if (200 === response.status) {
-                    const data: Card = response.data
+                if (response.status === 200) {
+                    const { data } = response
                     card = {}
-                    for (let field of config.resources[resource].display) {
+                    for (const field of config.resources[resource].display) {
                         card[field] = data[field]
                     }
                 }

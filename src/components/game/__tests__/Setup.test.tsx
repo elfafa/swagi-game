@@ -6,7 +6,7 @@ import Setup, { Props } from '../Setup'
 
 function renderSetup(props: Partial<Props> = {}) {
     const defaultProps: Props = {
-        onStartClick: () => {}
+        onStartClick: () => {},
     }
     return render(<Setup {...defaultProps} {...props} />)
 }
@@ -26,7 +26,7 @@ describe('<Setup />', () => {
     test('should start the game with the requested options', async () => {
         const onStartClick = jest.fn()
         const { findByTestId } = renderSetup({
-            onStartClick
+            onStartClick,
         })
         const resourceStarship = await findByTestId('resource-starship')
         fireEvent.click(resourceStarship)
@@ -35,6 +35,6 @@ describe('<Setup />', () => {
         const playButtn = await findByTestId('play-btn')
         fireEvent.click(playButtn)
         expect(onStartClick.mock.calls.length).toBe(1)
-        expect(onStartClick.mock.calls[0]).toEqual(["starship", 3])
+        expect(onStartClick.mock.calls[0]).toEqual(['starship', 3])
     })
 })

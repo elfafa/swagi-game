@@ -25,7 +25,7 @@ function renderCard(props: Partial<Props> = {}) {
 describe('<Card />', () => {
     test('should display loading', async () => {
         const { findByTestId } = renderCard()
-        await findByTestId("card-loading")
+        await findByTestId('card-loading')
     })
 })
 
@@ -37,7 +37,7 @@ describe('<Card />', () => {
                 deuces: 2,
                 looses: 3,
             },
-            loading: false
+            loading: false,
         })
         expect(screen.getByText(/W: 1/)).toBeInTheDocument()
         expect(screen.getByText(/D: 2/)).toBeInTheDocument()
@@ -49,9 +49,9 @@ describe('<Card />', () => {
     test('should display given icon', async () => {
         const { findByTestId } = renderCard({
             icon: 'fake-icon',
-            loading: false
+            loading: false,
         })
-        await findByTestId("card")
+        await findByTestId('card')
         expect(screen.getByText(/fake-icon/)).toBeInTheDocument()
     })
 })
@@ -66,9 +66,9 @@ describe('<Card />', () => {
                 looses: 3,
                 leader: true,
             },
-            loading: false
+            loading: false,
         })
-        await findByTestId("card")
+        await findByTestId('card')
         expect(screen.queryByText(/fake-icon/)).toBeNull()
         expect(screen.getByText(/stars/)).toBeInTheDocument()
     })
@@ -78,9 +78,9 @@ describe('<Card />', () => {
     test('should highlight winner', async () => {
         const { findByTestId } = renderCard({
             winner: true,
-            loading: false
+            loading: false,
         })
-        const card = await findByTestId("card")
+        const card = await findByTestId('card')
         expect(card.style.backgroundColor).toBe('yellow')
     })
 })
@@ -95,9 +95,9 @@ describe('<Card />', () => {
                 birth_year: 'character-byear',
                 gender: 'character-gender',
             },
-            loading: false
+            loading: false,
         })
-        await findByTestId("card")
+        await findByTestId('card')
         expect(screen.getByText(/character name/i)).toBeInTheDocument()
         expect(screen.getByText(/character height/i)).toBeInTheDocument()
         expect(screen.getByText(/character mass/i)).toBeInTheDocument()
@@ -105,4 +105,3 @@ describe('<Card />', () => {
         expect(screen.getByText(/character gender/i)).toBeInTheDocument()
     })
 })
-

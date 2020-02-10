@@ -16,13 +16,13 @@ import Typography from '@material-ui/core/Typography'
 import { Card as CardDetails, Stat, purify } from 'libraries'
 
 export interface Props {
-    card?: CardDetails | null, // card details
-    icon?: string, // which icon to use
-    loading: boolean, // is the card loading
-    player: number, // which player card it is
-    resource: string, // which resource it is
-    stats?: Stat, // player statistics
-    winner?: boolean | null, // is the card winning
+    card?: CardDetails | null; // card details
+    icon?: string; // which icon to use
+    loading: boolean; // is the card loading
+    player: number; // which player card it is
+    resource: string; // which resource it is
+    stats?: Stat; // player statistics
+    winner?: boolean | null; // is the card winning
 }
 
 const styles = {
@@ -37,19 +37,23 @@ const styles = {
 }
 
 export default (props: Props) => {
-    const { loading, card, resource, player, winner, icon, stats } = props
+    const {
+        loading, card, resource, player, winner, icon, stats,
+    } = props
 
-    let content: any = <CircularProgress data-testid="card-loading" key="loading"/>
+    // display a spinner if card is loading
+    let content: any = <CircularProgress data-testid="card-loading" key="loading" />
     if (!loading) {
-        let rows: any[] = []
-        for (let field in card) {
+        // construct the card details when received
+        const rows: any[] = []
+        for (const field in card) {
             rows.push(
                 <ListItem data-testid="card-details" key={field}>
                     <ListItemText key="label" primary={purify(field)} />
                     <ListItemSecondaryAction key="value">
                         <ListItemText primary={purify(card[field])} />
                     </ListItemSecondaryAction>
-                </ListItem>
+                </ListItem>,
             )
         }
         content = <List>{rows}</List>
@@ -58,25 +62,23 @@ export default (props: Props) => {
     return (
         <Card data-testid="card" style={winner ? styles.winnerCard : null}>
             <CardHeader
-                avatar={
+                avatar={(
                     <Avatar aria-label="recipe" style={stats.leader ? styles.leaderIcon : null}>
-                        <Tooltip title={(stats.leader ? 'Leader ' : '')+resource}>
+                        <Tooltip title={(stats.leader ? 'Leader ' : '') + resource}>
                             <Icon>{stats.leader ? 'stars' : icon}</Icon>
                         </Tooltip>
                     </Avatar>
-                }
+                )}
                 title={`Player ${player}`}
                 subheader={stats ? [
                     <label key="wins">W: {stats.wins}</label>,
                     '  ',
                     <label key="deuces">D: {stats.deuces}</label>,
                     '  ',
-                    <label key="looses">L: {stats.looses}</label>
-                ] : null}
+                    <label key="looses">L: {stats.looses}</label>,
+                  ] : null}
             />
-            <CardContent>
-                {content}
-            </CardContent>
+            <CardContent>{content}</CardContent>
         </Card>
     )
 }

@@ -8,26 +8,26 @@ import { config } from '../../../config'
 
 const mapStateToProps = (state: RootState, ownProps: any) => {
     let card: object
-    let loading: boolean = true
-    let winner: boolean = false
+    let loading = true
+    let winner = false
     if (state.game.rounds.length) {
-        const currentRound: number = state.game.rounds.length-1
-        const currentPlayer: string = `player${ownProps.player}`
+        const currentRound: number = state.game.rounds.length - 1
+        const currentPlayer = `player${ownProps.player}`
         card = state.game.rounds[currentRound][currentPlayer].card
         loading = state.game.rounds[currentRound][currentPlayer].loading
         winner = state.game.rounds[currentRound][currentPlayer].winner
     }
 
     return {
-        card: card,
-        loading: loading,
+        card,
+        loading,
         resource: state.game.setup.resource,
         icon: config.resources[state.game.setup.resource].icon,
-        winner: winner,
+        winner,
     }
 }
 
 export default connect(
     mapStateToProps,
-    null
+    null,
 )(Card)

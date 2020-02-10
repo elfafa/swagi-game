@@ -11,7 +11,7 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 
-import { Text  } from 'components/elements'
+import { Text } from 'components/elements'
 import { loadGames, Game, formatDate } from 'libraries'
 
 import { config } from '../../../config'
@@ -41,7 +41,7 @@ export default () => {
         return <Text>No history yet</Text>
     }
 
-    let history: any[] = []
+    const history: any[] = []
     games.reverse().map((game: Game) => {
         const rows = []
         let stats
@@ -49,7 +49,7 @@ export default () => {
             stats = game.stats[`player${player}`]
             if (stats) {
                 rows.push(
-                    <TableRow 
+                    <TableRow
                         key={player}
                         style={stats.leader ? styles.winnerRow : null}
                     >
@@ -57,15 +57,15 @@ export default () => {
                         <TableCell align="center">{stats.wins}</TableCell>
                         <TableCell align="center">{stats.deuces}</TableCell>
                         <TableCell align="center">{stats.looses}</TableCell>
-                    </TableRow>
+                    </TableRow>,
                 )
             }
         }
 
         history.push(
-            <Box 
-                m={2} 
-                data-testid={`game${game.id}`}  
+            <Box
+                m={2}
+                data-testid={`game${game.id}`}
                 key={`game${game.id}`}
             >
                 <List component="nav" aria-label="" style={styles.toolbar}>
@@ -74,14 +74,14 @@ export default () => {
                     <ListItem>To: {game.times.end ? formatDate(game.times.end) : 'unknown'}</ListItem>
                 </List>
                 <TableContainer
-                    data-testid={`game${game.id}-details`}  
+                    data-testid={`game${game.id}-details`}
                     component={Paper}
                     style={styles.table}
                 >
                     <Table size="small" aria-label="history">
                         <TableHead>
                             <TableRow>
-                                <TableCell style={styles.header}/>
+                                <TableCell style={styles.header} />
                                 <TableCell style={styles.header} align="center">Wins</TableCell>
                                 <TableCell style={styles.header} align="center">Deuces</TableCell>
                                 <TableCell style={styles.header} align="center">Looses</TableCell>
@@ -92,7 +92,7 @@ export default () => {
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </Box>
+            </Box>,
         )
     })
 

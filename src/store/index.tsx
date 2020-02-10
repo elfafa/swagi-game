@@ -4,9 +4,9 @@ import gameReducer from './game/reducer'
 import { GameState } from './game/types'
 
 export interface RootState {
-    game: GameState
+    game: GameState;
 }
 
 export const reducers: Reducer<RootState> = combineReducers<RootState>({
-    game: gameReducer
+    game: gameReducer,
 })

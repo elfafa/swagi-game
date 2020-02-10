@@ -7,14 +7,14 @@ import List from 'components/history/List'
 
 export default () => (
     <Grid item>
-        <Grid 
+        <Grid
             container
             justify="center"
             direction="column"
             alignItems="center"
         >
             <Title>History of games</Title>
-            <List/>
+            <List />
         </Grid>
     </Grid>
 )

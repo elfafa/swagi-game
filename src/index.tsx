@@ -17,7 +17,7 @@ const store = configureStore()
 
 render(
     <Provider store={store}>
-        <NavTab key="nav"/>                
+        <NavTab key="nav" />
         <GlobalStyles />
         <Box m={4}>
             <Grid
@@ -35,5 +35,5 @@ render(
             </Grid>
         </Box>
     </Provider>,
-    document.getElementById('root')
+    document.getElementById('root'),
 )

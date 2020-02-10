@@ -1,10 +1,9 @@
 import { Game, Round, Stats } from 'libraries'
 
-const swapiUniqKey: string = 'SWAPI_GAMES'
+const swapiUniqKey = 'SWAPI_GAMES'
 
 export const loadGames = () => {
-    let games
-    games = localStorage.getItem(swapiUniqKey)
+    const games = localStorage.getItem(swapiUniqKey)
     if (!games) {
         return []
     }
@@ -16,15 +15,11 @@ const saveGames = (games: Game[]) => {
 }
 
 export const saveGame = (resource: string, stats: Stats, rounds: Round[], id?: number) => {
-    let games: Game[] = loadGames()
-    let game: Game
+    const games: Game[] = loadGames()
     if (id) {
-        let index: number = games.findIndex(game => game.id === id)
+        const index: number = games.findIndex((game) => game.id === id)
         games[index].stats = stats
         games[index].rounds = rounds
-        if (close) {
-            games[index].times.end = + new Date()
-        }
     } else {
         id = games.length + 1
         games.push({
@@ -33,8 +28,8 @@ export const saveGame = (resource: string, stats: Stats, rounds: Round[], id?: n
             stats,
             rounds,
             times: {
-                start: + new Date()
-            }
+                start: +new Date(),
+            },
         })
     }
     saveGames(games)
@@ -42,8 +37,8 @@ export const saveGame = (resource: string, stats: Stats, rounds: Round[], id?: n
 }
 
 export const closeGame = (id: number) => {
-    let games: Game[] = loadGames()
-    let index: number = games.findIndex(game => game.id === id)
-    games[index].times.end = + new Date()
+    const games: Game[] = loadGames()
+    const index: number = games.findIndex((game) => game.id === id)
+    games[index].times.end = +new Date()
     saveGames(games)
 }
