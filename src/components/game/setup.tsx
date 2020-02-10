@@ -6,8 +6,8 @@ import Grid from '@material-ui/core/Grid'
 import ToggleButton from '@material-ui/lab/ToggleButton'
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
 
-import { Title  } from 'components/elements'
-import { upper  } from 'libraries'
+import { Title } from 'components/elements'
+import { upper } from 'libraries'
 
 import { config } from '../../../config'
 
@@ -16,20 +16,20 @@ export interface Props {
 }
 
 export default (props: Props) => {
-    const {onStartClick} = props
-    const [resource, setResource] = React.useState(Object.keys(config.resources)[0])
-    const [players, setPlayers] = React.useState(config.minPlayers)
+    const { onStartClick } = props
+    const [ resource, setResource ] = React.useState(Object.keys(config.resources)[0])
+    const [ players, setPlayers ] = React.useState(config.minPlayers)
 
     // dynamically construct the resource choices
     const resourcesDom: Array<any> = []
     Object.keys(config.resources).forEach((key: string) => (
-        resourcesDom.push(<ToggleButton key={`resource-${key}`} value={key} aria-label={`resource-${key}`}>{upper(key)}</ToggleButton>)
+        resourcesDom.push(<ToggleButton data-testid={`resource-${key}`} key={`resource-${key}`} value={key} aria-label={`resource-${key}`}>{upper(key)}</ToggleButton>)
     ))
 
     // dynamically construct the players choices
     const playersDom: Array<any> = []
     for(let key = config.minPlayers; key <= config.maxPlayers; key++){
-        playersDom.push(<ToggleButton key={`players-${key}`} value={key} aria-label={`players-${key}`}>{key}</ToggleButton>)
+        playersDom.push(<ToggleButton data-testid={`players-${key}`} key={`players-${key}`} value={key} aria-label={`players-${key}`}>{key}</ToggleButton>)
     }
 
     return (
@@ -68,6 +68,7 @@ export default (props: Props) => {
                 justify="center"
             >
                 <Button
+                    data-testid="play-btn"
                     variant="contained"
                     color="primary"
                     size="large"

@@ -16,13 +16,14 @@ export interface Props {
 export default (props: Props) => {
     const { players, stats, onNewRound, onEndGame } = props
 
-    React.useEffect(() => { onNewRound() }, [])
-    React.useEffect(() => () => { onEndGame() }, [])
+    React.useEffect(() => { onNewRound() }, []) // start new round when mount
+    React.useEffect(() => () => { onEndGame() }, []) // end the game when unmount
 
     let cardBlocks = []
     for (let player = 1; player <= players; player++) {
         cardBlocks.push(
             <Grid
+                data-testid="card" 
                 key={`player${player}`}
                 item
                 xs={12}
@@ -42,6 +43,7 @@ export default (props: Props) => {
                 justify="center"
             >
                 <Button
+                    data-testid="play-btn"
                     variant="contained"
                     color="primary"
                     size="large"

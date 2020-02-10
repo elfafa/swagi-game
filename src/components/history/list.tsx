@@ -42,7 +42,7 @@ export default () => {
     }
 
     let history: any[] = []
-    games.map((game: Game) => {
+    games.reverse().map((game: Game) => {
         const rows = []
         let stats
         for (let player = 1; player <= config.maxPlayers; player++) {
@@ -63,14 +63,18 @@ export default () => {
         }
 
         history.push(
-            <Box m={2}>
+            <Box 
+                m={2} 
+                data-testid={`game${game.id}`}  
+                key={`game${game.id}`}
+            >
                 <List component="nav" aria-label="" style={styles.toolbar}>
                     <ListItem>Resource: {game.resource}</ListItem>
                     <ListItem>From: {formatDate(game.times.start)}</ListItem>
                     <ListItem>To: {game.times.end ? formatDate(game.times.end) : 'unknown'}</ListItem>
                 </List>
-                <TableContainer 
-                    key={`game${game.id}`}
+                <TableContainer
+                    data-testid={`game${game.id}-details`}  
                     component={Paper}
                     style={styles.table}
                 >

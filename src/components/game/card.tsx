@@ -39,12 +39,12 @@ const styles = {
 export default (props: Props) => {
     const { loading, card, resource, player, winner, icon, stats } = props
 
-    let content: any = <CircularProgress key="loading"/>
+    let content: any = <CircularProgress data-testid="card-loading" key="loading"/>
     if (!loading) {
         let rows: any[] = []
         for (let field in card) {
             rows.push(
-                <ListItem key={field}>
+                <ListItem data-testid="card-details" key={field}>
                     <ListItemText key="label" primary={purify(field)} />
                     <ListItemSecondaryAction key="value">
                         <ListItemText primary={purify(card[field])} />
